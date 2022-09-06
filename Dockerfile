@@ -15,4 +15,8 @@ RUN mkdir -p /home/huggingface/.cache/huggingface \
 COPY docker-entrypoint.py /usr/local/bin
 COPY token.txt /home/huggingface
 
-ENTRYPOINT [ "docker-entrypoint.py" ]
+RUN pip install fastapi uvicorn
+
+CMD uvicorn server:app --reload
+
+# ENTRYPOINT [ "docker-entrypoint.py" ]
