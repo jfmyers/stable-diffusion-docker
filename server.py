@@ -72,5 +72,5 @@ async def root(model_run: ModelRun):
             image.save(img_name)
 
     print("completed pipeline:", iso_date_time(), flush=True)
-
-    return {"image": f'http://3.234.229.35/outputs/{img_name}'}
+    img_name = img_name.replace("output", "outputs")
+    return {"image": f'http://3.234.229.35/{img_name}'}
