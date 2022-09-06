@@ -19,6 +19,7 @@ COPY server.py /home/huggingface
 
 RUN pip install fastapi
 RUN pip install uvicorn
+RUN cp /home/huggingface/.local/bin/uvicorn /usr/local/bin
 
 CMD uvicorn server:app --reload
 
