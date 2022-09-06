@@ -73,4 +73,4 @@ async def root(model_run: ModelRun):
 
     print("completed pipeline:", iso_date_time(), flush=True)
 
-    return {"image": img_name}
+    return {"image": f'http://3.234.229.35/output/{img_name}'}
