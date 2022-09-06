@@ -3,7 +3,7 @@ services:
     build: .
     volumes:
       - .:/home/huggingface
-      - /usr/share/nginx/html/output:/home/huggingface/output
+      - /usr/share/nginx/html/outputs:/home/huggingface/output
     command: uvicorn server:app --host 0.0.0.0 --port 8000
     ports:
       - 8000:8000
