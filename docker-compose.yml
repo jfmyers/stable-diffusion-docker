@@ -1,0 +1,8 @@
+services:
+  server:
+    build: .
+    volumes:
+      - .:/home/huggingface
+    command: uvicorn server:app --reload
+    ports:
+      - 8000:8000
