@@ -46,9 +46,9 @@ async def root(model_run: ModelRun):
     prompt = model_run.prompt
     samples = 1
     iters = 1 
-    height = 1024
-    width = 1024 
-    steps = 100
+    height = 768
+    width = 768 
+    steps = 50
     scale = 7.5 
     seed = 0
 
