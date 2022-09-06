@@ -1,6 +1,6 @@
 FROM tensorflow/tensorflow:latest-gpu
 
-RUN pip install diffusers pillow torch transformers \
+RUN pip install diffusers pillow torch transformers fastapi uvicorn  \
   --extra-index-url https://download.pytorch.org/whl/cu116
 
 RUN useradd -m huggingface
@@ -16,10 +16,6 @@ COPY server.py /usr/local/bin
 COPY docker-entrypoint.py /usr/local/bin
 COPY token.txt /home/huggingface
 COPY server.py /home/huggingface
-
-RUN pip install fastapi
-RUN pip install uvicorn
-RUN cp /home/huggingface/.local/bin/uvicorn /usr/local/bin
 
 CMD uvicorn server:app --reload
 

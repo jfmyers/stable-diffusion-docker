@@ -16,27 +16,6 @@ def skip_safety_checker(images, *args, **kwargs):
     return images, False
 
 
-model_name = "CompVis/stable-diffusion-v1-4"
-half = False 
-dtype, rev = (torch.float16, "fp16") if half else (torch.float32, "main")
-device = "cuda"
-
-with open("token.txt") as f:
-        token = f.read().replace("\n", "")
-
-pipe = StableDiffusionPipeline.from_pretrained(
-        model_name, torch_dtype=dtype, revision=rev, use_auth_token=token
-    ).to(device)
-print("load pipeline start:", iso_date_time())
-
-skip = False
-    
-if skip:
-    pipe.safety_checker = skip_safety_checker
-
-print("loaded models after:", iso_date_time())
-
-
 class ModelRun(BaseModel):
     prompt: str
 
@@ -52,6 +31,26 @@ async def root(model_run: ModelRun):
     seed = 0
 
     prefix = prompt.replace(" ", "_")[:170]
+
+    model_name = "CompVis/stable-diffusion-v1-4"
+    half = False 
+    dtype, rev = (torch.float16, "fp16") if half else (torch.float32, "main")
+    device = "cuda"
+
+    with open("token.txt") as f:
+            token = f.read().replace("\n", "")
+
+    pipe = StableDiffusionPipeline.from_pretrained(
+            model_name, torch_dtype=dtype, revision=rev, use_auth_token=token
+        ).to(device)
+    print("load pipeline start:", iso_date_time())
+
+    skip = False
+        
+    if skip:
+        pipe.safety_checker = skip_safety_checker
+
+    print("loaded models after:", iso_date_time())
 
     generator = torch.Generator(device=device).manual_seed(seed)
     img_name = None
