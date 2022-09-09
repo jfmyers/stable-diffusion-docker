@@ -19,7 +19,10 @@ export const action: ActionFunction = async ({ request }) => {
     body: raw,
   };
 
-  const result = await fetch("http://44.211.96.130:8000/", requestOptions);
+  const result = await fetch(
+    "http://sd-api-2.lab3547.xyz:8000/",
+    requestOptions
+  );
   const data = await result.json();
   return {
     image: data.image,
@@ -36,7 +39,10 @@ export default function Index() {
         {actionData && actionData.image && (
           <img
             alt="generated"
-            src={`${actionData.image.replace("3.234.229.35", "44.211.96.130")}`}
+            src={`${actionData.image.replace(
+              "http://3.234.229.35",
+              "http://sd-api-2.lab3547.xyz"
+            )}`}
             style={{ width: "512px", height: "512px" }}
           />
         )}
@@ -45,17 +51,23 @@ export default function Index() {
       <div>
         <Form method="post" name="form">
           <fieldset disabled={transition.state === "submitting"}>
+            <h1>Fun w/ Stable Diffusion</h1>
             <p>
               <label>
-                Description:
+                Image Description:
                 <br />
-                <textarea name="description" />
+                <textarea
+                  name="description"
+                  style={{ width: 700, height: 200 }}
+                />
               </label>
             </p>
 
             <p>
               <button type="submit">
-                {transition.state === "submitting" ? "Creating..." : "Create"}
+                {transition.state === "submitting"
+                  ? "Diffusing..."
+                  : "Create Image"}
               </button>
             </p>
           </fieldset>
