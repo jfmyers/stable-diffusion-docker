@@ -20,7 +20,7 @@ export const action: ActionFunction = async ({ request }) => {
   };
 
   const result = await fetch(
-    "http://sd-api-2.lab3547.xyz:8000/",
+    "https://sd-api-2.lab3547.xyz:8000/",
     requestOptions
   );
   const data = await result.json();
