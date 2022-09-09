@@ -19,10 +19,7 @@ export const action: ActionFunction = async ({ request }) => {
     body: raw,
   };
 
-  const result = await fetch(
-    "https://sd-api-2.lab3547.xyz:8000/",
-    requestOptions
-  );
+  const result = await fetch("http://44.211.96.130:8000/", requestOptions);
   const data = await result.json();
   return {
     image: data.image,
