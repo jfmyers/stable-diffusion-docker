@@ -19,7 +19,7 @@ export const action: ActionFunction = async ({ request }) => {
     body: raw,
   };
 
-  const result = await fetch("http://3.234.229.35:8000/", requestOptions);
+  const result = await fetch("http://44.211.96.130:8000/", requestOptions);
   const data = await result.json();
   return {
     image: data.image,
@@ -36,7 +36,7 @@ export default function Index() {
         {actionData && actionData.image && (
           <img
             alt="generated"
-            src={`${actionData.image}`}
+            src={`${actionData.image.replace("3.234.229.35", "44.211.96.130")}`}
             style={{ width: "512px", height: "512px" }}
           />
         )}
