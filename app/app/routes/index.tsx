@@ -39,10 +39,7 @@ export default function Index() {
         {actionData && actionData.image && (
           <img
             alt="generated"
-            src={`${actionData.image.replace(
-              "http://3.234.229.35",
-              "http://sd-api-2.lab3547.xyz"
-            )}`}
+            src={`${actionData.image}`}
             style={{ width: "512px", height: "512px" }}
           />
         )}

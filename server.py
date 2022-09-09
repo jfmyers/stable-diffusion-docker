@@ -48,7 +48,7 @@ async def root(model_run: ModelRun):
     iters = 1 
     height = 512
     width = 512 
-    steps = 45
+    steps = 50
     scale = 7.5 
     seed = 0
 
